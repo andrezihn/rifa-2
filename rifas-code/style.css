@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  max-width: 900px;
+  margin: auto;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+.descricao-cabecalho {
+  display: flex;
+}
+
+.descricao-cabecalho > p {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.descricao-cabecalho > h2 {
+  border: 1px solid;
+  width: 200px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.principal {
+  display: flex;
+  gap: 10px;
+}
+
+.descricao-principal {
+  height: fit-content;
+}
+
+.descricao-principal > p {
+  width: 165px;
+  margin-bottom: 10px;
+}
+
+#numeros {
+  border: 1px solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+  }
+
+  .selecionado {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .destaque {
+    font-weight: bold;
+    color: #4CAF50;
+  }
+
+  #whatsappBtn {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #25D366;
+  color: white;
+  cursor: pointer;
+  }
+
+  #whatsappBtn:hover {
+    background-color: #1ebe5d;
+  }
