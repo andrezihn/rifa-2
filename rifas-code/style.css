@@ -14,6 +14,46 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 0 10px;
+  font-family: DM Sans, sans-serif;
+  padding-top: 350px; /* ajuste conforme a altura da sua navbar */  
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  border: 1px
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 110 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #85A947;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 50px;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #85A947;
 }
 
 header {
@@ -21,7 +61,7 @@ header {
 }
 
 header > div {
-  border: 1px solid black;
+  border: 1px solid #123524;
   width: fit-content;
   padding: 0 10px;
   height: 50px;
@@ -38,7 +78,7 @@ header > div > h3 {
 }
 
 header > div > div > button {
-  border: 1px solid black;
+  border: 1px solid #123524;
   border-radius: 50%;
 }
 
@@ -113,7 +153,7 @@ section {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border: 2px solid #000;
+  border: 2px solid #123524;
   border-radius: 8px;
   cursor: pointer;
   user-select: none;
@@ -183,9 +223,9 @@ section {
   }
 
   .footer {
-    background-color: #111;
+    background-color: #123524;
     color: #fff;
-    padding: 10px 500px 20px;
+    padding: 20px 491px 10px;
     font-family: Arial, sans-serif;
   }
   
@@ -206,7 +246,7 @@ section {
   .footer-section h3,
   .footer-section h4 {
     margin-bottom: 10px;
-    color: #f0c040;
+    color: #85A947;
   }
   
   .footer-section ul {
@@ -215,12 +255,12 @@ section {
   }
   
   .footer-section ul li a {
-    color: #ccc;
+    color: #fff;
     text-decoration: none;
   }
   
   .footer-section ul li a:hover {
-    color: #f0c040;
+    color: #85A947;
   }
   
   .social-icons {
@@ -232,7 +272,7 @@ section {
     text-align: center;
     margin-top: 30px;
     font-size: 14px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #123524;
     padding-top: 15px;
   }
   
