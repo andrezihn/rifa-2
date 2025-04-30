@@ -32,7 +32,7 @@ body {
 
 .navbar-container {
   max-width: 1200px;
-  margin: 110 auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -225,7 +225,7 @@ section {
   .footer {
     background-color: #123524;
     color: #fff;
-    padding: 20px 491px 10px;
+    padding: 10px 100%;
     font-family: Arial, sans-serif;
   }
   
