@@ -96,6 +96,7 @@ header {
   background-color: #25D366;
   color: white;
   cursor: pointer;
+  margin-top: 10px;
   }
 
   #whatsappBtn:hover {
