@@ -27,7 +27,7 @@ for (let i = 1; i <= 400; i++) {
 
 function calcularTotal(qtd) {
   if (qtd === 10) return 750;
-  if (qtd === 5) return 400;
+  if (qtd === 5) return 400; // promoções
   return qtd * valorPorNumero;
 }
 
@@ -51,7 +51,7 @@ whatsappBtn.addEventListener('click', () => {
   const valorFormatado = total.toFixed(2).replace('.', ',');
 
   const mensagem = `Olá! Quero reservar os seguintes números da rifa: ${numerosTexto}.\nValor total: R$ ${valorFormatado}.\nComo posso realizar o pagamento?`;
-  const telefone = "5511999999999"; // número fictício
+  const telefone = "5561995978892"; // número André
 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, '_blank');
