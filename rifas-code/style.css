@@ -7,35 +7,82 @@
 }
 
 body {
-  max-width: 900px;
-  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
 }
 
 header {
-  margin-bottom: 20px;
+  width: 100%;
 }
 
-.descricao-cabecalho {
-  display: flex;
-}
-
-.descricao-cabecalho > p {
+header > div {
+  border: 1px solid black;
   width: fit-content;
+  padding: 0 10px;
+  height: 50px;
+  margin: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 30px;
 }
 
-.descricao-cabecalho > h2 {
-  border: 1px solid;
-  width: 200px;
-  height: 70px;
+header > div > h3 {
+  font-size: 25px;
+}
+
+header > div > div > button {
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+header > div > div > button > a {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+header > div > div > button:nth-child(1) > a {
+  color: red;
+}
+
+header > div > div > button:nth-child(2) > a {
+  color: blue;
+}
+
+header > div > div > button:nth-child(3) > a {
+  color: black;
+}
+
+section {
+  width: 100%;
+}
+
+.cabecalho {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cabecalho > p {
+  width: 690px;
+  text-align: justify;
 }
 
 .principal {
+  max-width: 900px;
   display: flex;
   gap: 10px;
 }
@@ -45,7 +92,7 @@ header {
 }
 
 .descricao-principal > p {
-  width: 165px;
+  width: fit-content;
   margin-bottom: 10px;
 }
 
@@ -71,7 +118,7 @@ header {
   cursor: pointer;
   user-select: none;
   transition: background-color 0.2s;
-  }
+}
 
   .selecionado {
     background-color: #4CAF50;
@@ -96,9 +143,41 @@ header {
   background-color: #25D366;
   color: white;
   cursor: pointer;
-  margin-top: 10px;
   }
 
   #whatsappBtn:hover {
     background-color: #1ebe5d;
+  }
+
+  @media (max-width: 700px) {
+
+    header > div {
+      max-width: 300px;
+    }
+
+    .cabecalho {
+      max-width: 300px;
+    }
+
+    .cabecalho > p {
+      max-width: 300px;
+    }
+    
+    .principal {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #numeros {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+    .descricao-principal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
   }
