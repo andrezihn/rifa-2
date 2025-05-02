@@ -31,6 +31,9 @@ header {
   background-color: white;
 }
 
+.img-vaca{
+  width: 500px;
+}
 .cabecalho {
   max-width: 900px;
   margin: auto;

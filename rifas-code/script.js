@@ -26,6 +26,10 @@ links.forEach(link => {
 function calcularTotal(qtd) {
   if (qtd === 10) return 750;
   if (qtd === 5) return 400;
+  if (qtd === 6) return 500;
+  if (qtd === 7) return 600;
+  if (qtd === 8) return 700;
+  if (qtd === 9) return 800;
   return qtd * valorPorNumero;
 }
 
