@@ -1,33 +1,31 @@
+const iconeHamburguer = document.querySelector('.icone-hamburguer');
+const navBar = document.querySelector('nav');
+const links = document.querySelectorAll('nav a');
 const container = document.getElementById('numeros');
 const quantidadeSpan = document.getElementById('quantidade');
 const totalSpan = document.getElementById('total');
 const whatsappBtn = document.getElementById('whatsappBtn');
 const valorPorNumero = 100;
 let selecionados = [];
+let bloqueados = [];
 
-for (let i = 1; i <= 400; i++) {
-  const div = document.createElement('div');
-  div.classList.add('numero');
-  div.textContent = i;
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzht-XVQCWx0sJHfm6CquKiqjf0-Mxwu8oTsFA1zfmjhYx5C7Pztb08R4hnRg1lKTeH/exec';
 
-  div.addEventListener('click', () => {
-    const numero = i;
-    if (selecionados.includes(numero)) {
-      selecionados = selecionados.filter(n => n !== numero);
-      div.classList.remove('selecionado');
-    } else {
-      selecionados.push(numero);
-      div.classList.add('selecionado');
-    }
-    atualizarResumo();
+iconeHamburguer.addEventListener('click', () => {
+  iconeHamburguer.classList.toggle('ativo');
+  navBar.classList.toggle('ativo');
+});
+
+links.forEach(link => {
+  link.addEventListener('click', () => {
+    iconeHamburguer.classList.remove('ativo');
+    navBar.classList.remove('ativo');
   });
-
-  container.appendChild(div);
-}
+});
 
 function calcularTotal(qtd) {
   if (qtd === 10) return 750;
-  if (qtd === 5) return 400; // promoções
+  if (qtd === 5) return 400;
   return qtd * valorPorNumero;
 }
 
@@ -37,6 +35,46 @@ function atualizarResumo() {
 
   quantidadeSpan.textContent = qtd;
   totalSpan.textContent = "R$ " + total.toFixed(2).replace('.', ',');
+}
+
+function criarNumeros() {
+  for (let i = 1; i <= 400; i++) {
+    const div = document.createElement('div');
+    div.classList.add('numero');
+    div.textContent = i;
+
+    if (bloqueados.includes(i)) {
+      div.classList.add('bloqueado');
+      div.title = 'Número já reservado';
+    } else {
+      div.addEventListener('click', () => {
+        const numero = i;
+        if (selecionados.includes(numero)) {
+          selecionados = selecionados.filter(n => n !== numero);
+          div.classList.remove('selecionado');
+        } else {
+          selecionados.push(numero);
+          div.classList.add('selecionado');
+        }
+        atualizarResumo();
+      });
+    }
+
+    container.appendChild(div);
+  }
+}
+
+function carregarNumerosBloqueados() {
+  fetch(scriptURL)
+    .then(response => response.json())
+    .then(data => {
+      bloqueados = data.map(item => parseInt(item.numero));
+      criarNumeros();
+    })
+    .catch(error => {
+      console.error('Erro ao carregar os números bloqueados:', error);
+      criarNumeros(); // Mesmo se falhar, cria os números
+    });
 }
 
 whatsappBtn.addEventListener('click', () => {
@@ -51,8 +89,10 @@ whatsappBtn.addEventListener('click', () => {
   const valorFormatado = total.toFixed(2).replace('.', ',');
 
   const mensagem = `Olá! Quero reservar os seguintes números da rifa: ${numerosTexto}.\nValor total: R$ ${valorFormatado}.\nComo posso realizar o pagamento?`;
-  const telefone = "5561995978892"; // número André
+  const telefone = "5511999999999"; // Substitua com seu número
 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, '_blank');
 });
+
+carregarNumerosBloqueados();
