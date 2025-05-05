@@ -8,12 +8,10 @@
   list-style: none;
   text-decoration: none;
 }
-
 :root {
   --font-titulo: "Montserrat", sans-serif;
   --font-texto: "Inter", sans-serif;
 }
-
 body {
   display: flex;
   flex-direction: column;
@@ -21,7 +19,6 @@ body {
   justify-content: center;
   gap: 10px;
 }
-
 header {
   width: 100%;
   position: sticky;
@@ -30,9 +27,16 @@ header {
   padding: 0 10px;
   background-color: white;
 }
-
-.img-vaca{
-  width: 500px;
+.img-principal{
+  width: 370px;
+  display: center;
+  border-radius: 10px;
+}
+.um{
+  width: 250px;
+  height: auto;
+  display: flex;
+  border-radius: 10px;
 }
 .cabecalho {
   max-width: 900px;

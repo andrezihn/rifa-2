@@ -5,7 +5,7 @@ const container = document.getElementById('numeros');
 const quantidadeSpan = document.getElementById('quantidade');
 const totalSpan = document.getElementById('total');
 const whatsappBtn = document.getElementById('whatsappBtn');
-const valorPorNumero = 100;
+const valorPorNumero = 50;
 let selecionados = [];
 let bloqueados = [];
 
@@ -24,12 +24,12 @@ links.forEach(link => {
 });
 
 function calcularTotal(qtd) {
-  if (qtd === 10) return 750;
-  if (qtd === 5) return 400;
-  if (qtd === 6) return 500;
-  if (qtd === 7) return 600;
-  if (qtd === 8) return 700;
-  if (qtd === 9) return 800;
+  if (qtd === 5) return 200;
+  if (qtd === 6) return 250;
+  if (qtd === 7) return 300;
+  if (qtd === 8) return 350;
+  if (qtd === 9) return 400;
+  if (qtd === 10) return 350;
   return qtd * valorPorNumero;
 }
 
@@ -93,7 +93,7 @@ whatsappBtn.addEventListener('click', () => {
   const valorFormatado = total.toFixed(2).replace('.', ',');
 
   const mensagem = `Olá! Quero reservar os seguintes números da rifa: ${numerosTexto}.\nValor total: R$ ${valorFormatado}.\nComo posso realizar o pagamento?`;
-  const telefone = "5511999999999"; // Substitua com seu número
+  const telefone = "5561995978892"; // Número de telefone para check-in
 
   const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
   window.open(url, '_blank');
