@@ -100,3 +100,79 @@ whatsappBtn.addEventListener('click', () => {
 });
 
 carregarNumerosBloqueados();
+
+const imagens = document.querySelectorAll('.carrossel .slide');
+const btnAnterior = document.querySelector('.carrossel .anterior');
+const btnProximo = document.querySelector('.carrossel .proximo');
+const carrossel = document.querySelector('.carrossel');
+let index = 0;
+
+function mostrarSlide(i) {
+  imagens.forEach(img => img.classList.remove('ativa'));
+  imagens[i].classList.add('ativa');
+}
+
+btnAnterior.addEventListener('click', () => {
+  index = (index - 1 + imagens.length) % imagens.length;
+  mostrarSlide(index);
+});
+
+btnProximo.addEventListener('click', () => {
+  index = (index + 1) % imagens.length;
+  mostrarSlide(index);
+});
+
+// Auto-play (opcional)
+setInterval(() => {
+  index = (index + 1) % imagens.length;
+  mostrarSlide(index);
+}, 5000); // Troca a cada 5 segundos
+
+// Arrastar com o mouse
+let isDragging = false;
+let startX = 0;
+
+carrossel.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.clientX;
+});
+
+carrossel.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const deltaX = e.clientX - startX;
+
+  if (Math.abs(deltaX) > 50) {
+    if (deltaX < 0) {
+      index = (index + 1) % imagens.length;
+    } else {
+      index = (index - 1 + imagens.length) % imagens.length;
+    }
+    mostrarSlide(index);
+    isDragging = false;
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+// Touch para celular
+let touchStartX = 0;
+
+carrossel.addEventListener('touchstart', (e) => {
+  touchStartX = e.touches[0].clientX;
+});
+
+carrossel.addEventListener('touchend', (e) => {
+  const touchEndX = e.changedTouches[0].clientX;
+  const deltaX = touchEndX - touchStartX;
+
+  if (Math.abs(deltaX) > 50) {
+    if (deltaX < 0) {
+      index = (index + 1) % imagens.length;
+    } else {
+      index = (index - 1 + imagens.length) % imagens.length;
+    }
+    mostrarSlide(index);
+  }
+});
