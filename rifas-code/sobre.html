@@ -3,86 +3,148 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Carrossel de Imagens</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .carrossel {
-            max-width: 800px;
-            margin: 40px auto;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-            /* se tiver 3 imagens, 300% */
-        }
-
-        .slides img {
-            width: 100%;
-            height: auto;
-            flex: 1 0 100%;
-        }
-
-        .botoes {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 10px;
-        }
-
-        .botoes button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            font-size: 18px;
-            padding: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Sobre</title>
 </head>
 
 <body>
 
-    <div class="carrossel">
-        <div class="slides" id="slides">
-            <img src="img-tuta.jpeg" alt="Imagem 1">
-            <img src="img-remedio-Alecensa.jpeg" alt="Imagem 2">
-            <img src="img-vaca-1.jpeg" alt="Imagem 3">
+    <header>
+        <div class="cabecalho">
+
+            <h1>
+                <a href="index.html">
+
+                </a>
+            </h1>
+            <div class="redes-sociais">
+                <button>
+                    <a target="_blank"
+                        href="https://www.instagram.com/andersontuta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </button>
+                <button>
+                    <a target="_blank" href="https://www.tiktok.com/@andr3.lss">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </button>
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#doacao">
+                            Doações
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sobre">
+                            Sobre
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="icone-hamburguer">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
         </div>
-        <div class="botoes">
-            <button onclick="mudarSlide(-1)">❮</button>
-            <button onclick="mudarSlide(1)">❯</button>
+    </header>
+
+    <main class="txt-sobre" style="font-family: sans-serif;">
+        <div class="principal">
+            <h1>
+                Anderson José Soares
+            </h1>
+            <p id="sobre"> texto a fazer texto a fazer texto a fazer </p>
         </div>
-    </div>
+        <div class="container">
+            <div class="post">
+                <h2>Título do Post 1</h2>
+                <img src="https://via.placeholder.com/800x300" alt="Imagem do post">
+                <p>Esse é o conteúdo do primeiro post. Aqui você compartilha uma informação útil que ajuda outras
+                    pessoas a
+                    entender melhor sobre o assunto que você domina.</p>
+            </div>
+            <div class="post">
+                <h2>Título do Post 2</h2>
+                <img src="https://via.placeholder.com/800x300" alt="Imagem do post">
+                <p>Outro conteúdo interessante vai aqui. Use esse espaço para ensinar, refletir ou compartilhar algo
+                    importante.</p>
+            </div>
+        </div>
 
-    <script>
-        let slideAtual = 0;
-        const slides = document.getElementById('slides');
-        const totalSlides = slides.children.length;
+    </main>
 
-        function mudarSlide(direcao) {
-            slideAtual = (slideAtual + direcao + totalSlides) % totalSlides;
-            slides.style.transform = `translateX(-${slideAtual * 100}%)`;
-        }
+    <footer>
 
-        // Muda automaticamente a cada 5 segundos
-        setInterval(() => mudarSlide(1), 15000);
-    </script>
+        <div class="rodape">
+            <ul>
+                <li>
+                    <h3>
+                        Sobre
+                    </h3>
+                    <p>
+                        Este site tem um propósito de ajudar e facilitar todo o processo de tratamento
+                        oncólogico do meu pai, agradeço a compreesão<br>
+                        Instagram: @andr3_lss
+                    </p>
+                </li>
+                <li>
+                    <h3>
+                        Links
+                    </h3>
+                    <div>
+                        <a href="index.html">
+                            Inicío
+                        </a>
+                        <a href="#doacao">
+                            Doações
+                        </a>
+                        <a href="#sobre">
+                            Sobre
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <h3>
+                        Redes Sociais
+                    </h3>
+                    <div>
+                        <a target="_blank"
+                            href="https://www.instagram.com/andersontuta?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a target="_blank" href="https://www.tiktok.com/@andr3.lss">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </li>
+
+                <li>
+                    <p style="font-family: sans-serif; font-size: small;">
+                        © Desenvolvido por <a target="_blank" href="https://altolead.vercel.app/">AltoLead</a>. Todos os
+                        direitos reservados.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+
 
 </body>
 

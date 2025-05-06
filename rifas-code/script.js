@@ -126,7 +126,7 @@ btnProximo.addEventListener('click', () => {
 setInterval(() => {
   index = (index + 1) % imagens.length;
   mostrarSlide(index);
-}, 5000); // Troca a cada 5 segundos
+}, 15000); // Troca a cada 15 segundos
 
 // Arrastar com o mouse
 let isDragging = false;
