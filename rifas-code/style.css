@@ -14,7 +14,12 @@
   --font-texto: "Inter", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,11 +33,12 @@ header {
   top: 0;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
   background-color: white;
+  padding: 0 15px;
   z-index: 1;
 }
 
 .cabecalho {
-  max-width: 920px;
+  max-width: 1300px;
   margin: auto;
   height: 10vh;
   display: flex;
@@ -54,16 +60,16 @@ header {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  border: 1px solid black;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  border: 1px solid;
+  border-radius: 5px;
 }
 
 .icone-hamburguer > div {
   width: 25px;
-  height: 4px;
+  height: 3px;
   background-color: black;
   transition: all 0.3s ease-in-out;
 }
@@ -127,59 +133,134 @@ nav > ul > li > a:hover {
   color: black;
 }
 
-.principal > p {
-  max-width: 700px;
-  text-align: justify;
-}
-
 main {
-  padding: 20px 10px 30px 10px;
+  padding: 0 15px;
 }
 
 .principal {
-  display: grid;
-  grid-template-areas: 
-  "titulo titulo titulo titulo"
-  "texto  texto  texto  texto"
-  "img    img    img    img"
-  "numero numero numero total";
-  gap: 20px;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.principal > h1 {
+.descricao-principal {
+  display: grid;
+  grid-template-areas:
+  'titulo img'
+  'texto  img';
+  grid-template-columns: repeat(2, auto);
+  row-gap: 10px;
+  column-gap: 20px;
+  padding: 10px 0 30px 0;
+}
+
+.descricao-principal > h1 {
   grid-area: titulo;
+  width: fit-content;
   font-family: var(--font-titulo);
 }
 
 #sobre {
-  scroll-margin-top: 130px;
-}
-
-.principal > p {
-  grid-area: texto;
-  font-family: var(--font-texto);
-}
-
-.container-numeros {
-  grid-area: numero;
-  max-width: 700px;
-}
-
-.descricao-principal {
-  grid-area: total;
-  height: fit-content;
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  scroll-margin-top: 160px;
 }
 
 .descricao-principal > p {
-  font-size: 18px;
+  grid-area: texto;
+  font-family: var(--font-texto);
+  text-align: justify;
+}
+
+  .container-carrossel {
+    grid-area: img;
+    display: flex;
+    align-items: center;
+  }
+
+  .carrossel {
+    width: fit-content;
+    border: 1px solid black;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .carrossel img {
+    display: none;
+    width: 250px;
+    object-fit: cover;
+  }
+  
+  .carrossel img.ativa {
+    display: block;
+  }
+  
+  .carrossel button {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .carrossel .anterior {
+    left: 7px;
+  }
+  
+  .carrossel .proximo {
+    right: 7px;
+  }
+
+.rifa {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 20px;
+  padding: 30px 0 60px 0;
+}
+
+.div-span {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.div-span > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.div-span > div .span {
+  font-size: 17px;
   font-family: var(--font-texto);
 }
 
-.container-numeros > p {
+.div-span > div:nth-child(1) > .span2 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.div-span > div:nth-child(1) > .span2 > strong {
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 23px;
+}
+
+.container-numeros > span {
+  display: block;
   border: 1px solid;
   border-bottom: none;
   width: fit-content;
@@ -201,8 +282,23 @@ main {
   gap: 10px;
   max-height: 400px;
   overflow-y: scroll;
-  padding: 5px 5px 5px 20px;
+  padding: 5px 5px 5px 30px;
   border-radius: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+#numeros::-webkit-scrollbar {
+  width: 6px;
+}
+
+#numeros::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#numeros::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
 }
 
 .numero {
@@ -218,13 +314,15 @@ main {
   transition: background-color 0.2s;
 }
 
-.numero:hover {
-  background-color: #4CAF50;
-  color: white;
-}  
+@media (hover: hover) {
+  .numero:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+}
 
 .numero.bloqueado {
-  background-color: red;
+  background-color: rgb(168, 100, 250);
   color: white;
   cursor: not-allowed;
 }
@@ -240,19 +338,21 @@ main {
 }
 
   #whatsappBtn {
-  width: 200px;
-  height: 40px;
+  width: 100%;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 15px;
+  font-size: 18px;
   border: none;
-  border-radius: 8px;
+  border-radius: 30px;
   background-color: #25D366;
   color: white;
   cursor: pointer;
   font-family: var(--font-texto);
+  padding: 0 20px;
+  transition: background-color 0.3s;
   }
 
   #whatsappBtn:hover {
@@ -263,18 +363,47 @@ main {
     font-size: 18px;
   }
 
+  .btn-doacoes {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+  }
+
+  .btn-doacoes > a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 18px;
+    color: white;
+    background-color: #25D366;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+  }
+
+  .btn-doacoes > a > i {
+    font-size: 19px;
+  }
+
+  .btn-doacoes > a:hover {
+    background-color: #1ebe5d;
+  }
+
   footer {
     width: 100%;
     display: flex;
     justify-content: center;
     background-color: black;
     color: white;
-    padding: 30px 10px 5px 10px;
+    padding: 30px 15px 15px 15px;
   }
 
   .rodape {
     width: 100%;
-    max-width: 900px;
+    max-width: 1300px;
   }
 
   .rodape > ul {
@@ -315,12 +444,12 @@ main {
     font-family: var(--font-titulo);
   }
 
-  .rodape > ul > li:nth-child(1) > p {
+  .rodape > ul > li:nth-child(1) > span {
     max-width: 200px;
     font-family: var(--font-texto);
   }
 
-  .rodape > ul > li:nth-child(1) > p > a {
+  .rodape > ul > li:nth-child(1) > span > a {
     color: white;
     text-decoration: underline;
   }
@@ -361,71 +490,24 @@ main {
     font-size: 30px;
   }
 
-  .rodape > ul > li:nth-child(4) > p {
+  .rodape > ul > li:nth-child(4) > span {
     font-family: var(--font-texto);
   }
 
-  .rodape > ul > li:nth-child(4) > p > br {
+  .rodape > ul > li:nth-child(4) > span > br {
     display: none;
   }
 
-  .rodape > ul > li:nth-child(4) > p > a {
+  .rodape > ul > li:nth-child(4) > span > a {
     color: white;
     text-decoration: underline;
     font-size: 17px;
-  }
-
-  .carrossel {
-    grid-area: img;
-    border: 1px solid black;
-    max-width: 700px;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    border-radius: 10px;
-  }
-  
-  .carrossel img {
-    display: none;
-    width: 600px;
-    object-fit: cover;
-  }
-  
-  .carrossel img.ativa {
-    display: block;
-  }
-  
-  .carrossel button {
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  
-  .carrossel .anterior {
-    left: 7px;
-  }
-  
-  .carrossel .proximo {
-    right: 7px;
-  }  
+  } 
 
   @media (max-width: 700px) {
 
-    .cabecalho {
-      max-width: 350px;
-    }
-
     .cabecalho > h1 > a {
-      font-size: 26px;
+      font-size: 26.5px;
     }
 
     nav {
@@ -449,7 +531,7 @@ main {
 
     nav > ul > li {
       width: 100%;
-      height: 40px;
+      height: 50px;
     }
 
     nav > ul > li > a {
@@ -471,42 +553,101 @@ main {
     .icone-hamburguer {
       display: flex;
     }
-    
-    .principal {
-      max-width: 350px;
+
+    .descricao-principal {
       display: flex;
       flex-direction: column;
     }
 
-    .principal > p {
-      width: fit-content;
+    .container-carrossel {
+      justify-content: center;
     }
 
-    #numeros {
-      max-width: 350px;
-      max-height: 350px;
+    .carrossel {
+      width: 100%;
+      margin-top: 20px;
     }
 
-    .descricao-principal {
-      width: fit-content;
+    .rifa {
       display: flex;
       flex-direction: column;
       align-items: center;
-      text-align: center;
-      margin-top: 0;
-      margin: auto;
+      gap: 0px;
     }
 
-    .descricao-principal > p > br {
-      display: none;
-    }
-
-    .rodape {
-      max-width: 350px;
-    }
-
-    .rodape > ul {
+    .div-span {
       display: grid;
+      grid-template-areas:
+      'div-span1 div-span2'
+      'btn1      btn1'
+      'btn2      btn2';
+    }
+
+    .div-span > div:nth-child(1) {
+      grid-area: div-span1;
+    }
+    .div-span > div:nth-child(2) {
+      grid-area: div-span2;
+      flex-direction: column-reverse;
+    }
+    .div-span > #whatsappBtn {
+      grid-area: btn1;
+    }
+    .div-span > .btn-doacoes {
+      grid-area: btn2;
+    }
+
+    .div-span > div > span {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid;
+      padding: 10px 5px;
+      border-radius: 5px;
+    }
+
+    .div-span > div:nth-child(1) > .span1 {
+      height: 70px;
+    }
+
+    .div-span > div:nth-child(2) > .span3 {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .div-span > div:nth-child(2) > .span3 > span {
+      border: 1px solid black;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    .div-span > div:nth-child(2) > .span4 {
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #numeros {
+      max-height: 300px;
+    }
+
+    .numero:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .numero.bloqueado {
+      background-color: rgb(168, 100, 250);
+      color: white;
+      cursor: not-allowed;
     }
 
     .rodape > ul {
@@ -515,20 +656,27 @@ main {
       'links links sociais sociais'
       'direitos direitos direitos direitos';
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, 100px);
+      grid-template-rows: repeat(3, 1fr);
     }
 
-    .rodape > ul > li:nth-child(1) > p {
-      max-width: fit-content;
+    .rodape > ul > li:nth-child(1) > span {
+      max-width: 100%;
       text-align: justify;
     }
 
-    .rodape > ul > li:nth-child(4) > p {
+    .rodape > ul > li:nth-child(4) > span {
       text-align: center;
     }
 
-    .rodape > ul > li:nth-child(4) > p > br {
+    .rodape > ul > li:nth-child(4) > span > br {
       display: block;
     }
 
+  }
+
+  @media (max-width: 370px) {
+    
+    .cabecalho > h1 > a {
+      font-size: 19px;
+    }
   }
